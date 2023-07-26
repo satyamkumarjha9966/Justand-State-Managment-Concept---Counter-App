@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import react from 'react';
+
+// Using Zustand Store
+import { useStore } from './store/justand';
 
 function App() {
+  const count = useStore(state => state.count);
+  const increaseCount = useStore(state => state.increaseCount);
+  const decreaseCount = useStore(state => state.decreaseCount);
+  const reset = useStore(state => state.reset);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Counter App <br/> Using React Justand State Managment Concept</h1>
+      <span>{count}</span>
+      <button onClick={increaseCount}>Increase</button>
+      <button onClick={decreaseCount}>Decrease</button>
+      <button onClick={reset}>Reset</button>
     </div>
   );
 }
